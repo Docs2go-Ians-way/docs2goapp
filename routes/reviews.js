@@ -4,38 +4,38 @@
 const express = require('express');
 const router = express.Router();
 
-/* Get posts index /posts  */
+/* Get reviews index /reviews  */
 router.get('/', (req, res, next) => {
-    res.send('INDEX /posts');
+    res.send('INDEX /reviews');
   });
 
-/* Get posts index /posts/new  */
+/* Get reviews index /reviews/new  */
 router.get('/new', (req, res, next) => {
-  res.send('NEW /posts/new');
+  res.send('NEW /reviews/new');
 });
 
-/* POST posts create /posts  */
+/* Post reviews create /reviews  */
   router.post('/', (req, res, next) => {
-    res.send('CREATE /posts/new');
+    res.send('CREATE /reviews/new');
   });
 
-/* Get posts show /posts/:id  */
+/* Get reviews show /reviews/:id  */
 router.get('/:id', (req, res, next) => {
-  res.send('SHOW /posts/new');
+  res.send('SHOW /reviews/new');
 });
 
-/* Get posts edit /posts/:id/edit  */
+/* Get reviews edit /reviews/:id/edit  */
   router.get('/:id/edit', (req, res, next) => {
-    res.send('EDIT /posts/:id/edit ');
+    res.send('EDIT /reviews/:id/edit ');
   });
-/* PUT posts update /posts/:id  */
+/* PUT reviews update /reviews/:id  */
 router.put('/:id', (req, res, next) => {
-  res.send('UPDATE /posts/:id');
+  res.send('UPDATE /reviews/:id');
 });
 
-  /* DELETE posts destroy /posts/:id  */
+  /* DELETE reviews destroy /reviews/:id  */
   router.delete('/:id', (req, res, next) => {
-    res.send('DELETE /posts/:id');
+    res.send('DELETE /reviews/:id');
   });
   
 
