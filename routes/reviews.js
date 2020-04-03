@@ -1,51 +1,46 @@
-//Remember Etienne route filenames are always PLURAL, and yes it was you who put this here Etienne.
-// And MODEL files are always singular.
+// REVIEWS BELONG TO A POST
+// Remember Etienne route filenames are always PLURAL, and yes it was you who put this here Etienne.
+// MODEL files are always singular.
 
 const express = require('express');
-const router = express.Router();
+const router = express.Router({ mergeParams: true });
+// Remember that /post/:id/reviews is taken care of in the app.js file
 
-/* Get reviews index /reviews  */
+
+
+/* Get reviews index /posts/:id/reviews  */
 router.get('/', (req, res, next) => {
-    res.send('INDEX /reviews');
-  });
+    res.send('INDEX /posts/:id/reviews');
+  }); 
 
-/* Get reviews index /reviews/new  */
-router.get('/new', (req, res, next) => {
-  res.send('NEW /reviews/new');
-});
-
-/* Post reviews create /reviews  */
+/* Post reviews create /posts/:id/reviews  */
   router.post('/', (req, res, next) => {
-    res.send('CREATE /reviews/new');
+    res.send('CREATE /posts/:id/reviews/new');
   });
 
-/* Get reviews show /reviews/:id  */
-router.get('/:id', (req, res, next) => {
-  res.send('SHOW /reviews/new');
-});
-
-/* Get reviews edit /reviews/:id/edit  */
-  router.get('/:id/edit', (req, res, next) => {
-    res.send('EDIT /reviews/:id/edit ');
+/* Get reviews edit /posts/:id/:review_id/edit  */
+  router.get('/:review_id/edit', (req, res, next) => {
+    res.send('EDIT /posts/:id/reviews/:review_id/edit ');
   });
-/* PUT reviews update /reviews/:id  */
-router.put('/:id', (req, res, next) => {
-  res.send('UPDATE /reviews/:id');
+
+/* PUT reviews update /posts/:id/reviews/:id  */
+router.put('/:review_id', (req, res, next) => {
+  res.send('UPDATE /posts/:id/reviews/:review_id');
 });
 
   /* DELETE reviews destroy /reviews/:id  */
-  router.delete('/:id', (req, res, next) => {
-    res.send('DELETE /reviews/:id');
+  router.delete('/:review_id', (req, res, next) => {
+    res.send('DELETE /posts/:id/reviews/:review_id');
   });
   
 
 module.exports = router;
 
 // 7 RESTFUL ROUTES
-// GET index                    /review 
-// GET new                      /review/new 
-// POST create                  /review 
-// GET show                     /review/:id 
-// GET edit                     /review/:id/edit 
-// PUT update                   /review/:id
-// DELETE destroy               /review/:id
+// GET index                    /posts/:id/reviews
+// GET new                      not used here
+// POST create                  /posts/:id/reviews/new
+// GET show                     not used here
+// GET edit                     /posts/:id/reviews/:review_id/edit
+// PUT update                   /posts/:id/reviews/:review_id
+// DELETE destroy               /posts/:id/reviews/:review_id
