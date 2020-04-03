@@ -42,10 +42,10 @@ router.put('/:id', (req, res, next) => {
 module.exports = router;
 
 // 7 RESTFUL ROUTES
-// GET index                    /posts 
-// GET new                      /posts/new 
-// POST create                  /posts 
-// GET show                     /posts/:id 
-// GET edit                     /posts/:id/edit 
-// PUT update                   /posts/:id
-// DELETE destroy               /posts/:id
+// GET index                    /review 
+// GET new                      /review/new 
+// POST create                  /review 
+// GET show                     /review/:id 
+// GET edit                     /review/:id/edit 
+// PUT update                   /review/:id
+// DELETE destroy               /review/:id
