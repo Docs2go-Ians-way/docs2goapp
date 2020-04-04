@@ -1,3 +1,4 @@
+// require project dependancies
 const createError     = require('http-errors');
 const express         = require('express');
 const path            = require('path');
@@ -9,10 +10,18 @@ const passport        = require('passport');
 const User            = require('./models/user');
 const session         = require('express-session');
 
+
 // connect to mongo db setup
 mongoose.connect('mongodb://localhost:27017/Docs2go',{
   useNewUrlParser : true,
   useUnifiedTopology: true
+});
+
+const db = mongoose.connection;
+
+    db.on('error', console.error.bind(console, 'connection error:'));
+    db.once('open', function() {
+      console.log('We are connected!! Whoop!');
 });
 
 
