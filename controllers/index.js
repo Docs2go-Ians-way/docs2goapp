@@ -3,6 +3,7 @@ const User = require('../models/user');
 const passport = require('passport');
 
 
+
 //These are methods which follow
 module.exports = {
 // create a method that we can use with postRegister 
