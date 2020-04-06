@@ -7,9 +7,15 @@ module.exports = {
         res.render('posts/index', { posts });
     },
     
-        // Posts new
+    // Posts new
     newPost(req,res, next) {
         res.render('posts/new');
-    }
+    },
 
+    // Post create
+    async createPost(req, res, next) 
+        {
+            let post = await Post.create(req.body);
+            res.redirect(`/posts/${post.id}`);
+        }
 }

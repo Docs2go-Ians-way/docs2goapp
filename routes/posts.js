@@ -1,10 +1,13 @@
 //Remember Etienne route filenames are always PLURAL, and yes it was you who put this here Etienne.
 // And MODEL files are always singular.
 
-const express = require('express');
-const router = express.Router();
+const express       = require('express');
+const router        = express.Router();
 const { asyncErrorHandler } = require('../middleware');
-const { getPosts, newPost } = require('../controllers/posts');
+const { getPosts, 
+        newPost, 
+        createPost 
+      }             = require('../controllers/posts');
 
 /* Get posts index /posts  */
 router.get('/', asyncErrorHandler(getPosts));
@@ -13,13 +16,11 @@ router.get('/', asyncErrorHandler(getPosts));
 router.get('/new', newPost);
 
 /* POST posts create /posts  */
-  router.post('/', (req, res, next) => {
-    res.send('CREATE /posts/new');
-  });
+  router.post('/', asyncErrorHandler(createPost));
 
 /* Get posts show /posts/:id  */
 router.get('/:id', (req, res, next) => {
-  res.send('SHOW /posts/new');
+  res.send('SHOW /posts/:id');
 });
 
 /* Get posts edit /posts/:id/edit  */
