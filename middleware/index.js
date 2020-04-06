@@ -1,8 +1,8 @@
+// higher end function which takes anomous function as perameter
 module.exports = {
-    errorHandler: function(fn){
-        function(req,res, next) {
-            Promise.resolve(fn(req,res, next))
-            .catch(next);
-        }
-    }
+    asyncErrorHandler: (fn) =>
+        (req, res, next) => {
+            Promise.resolve(fn(req, res, next))
+                         .catch(next);
+        },
 }

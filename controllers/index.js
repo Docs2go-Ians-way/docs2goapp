@@ -2,6 +2,7 @@
 const User = require('../models/user');
 
 
+
 module.exports = {
 // create a method that we can use with postRegister 
             async postRegister(req, res, next) {
