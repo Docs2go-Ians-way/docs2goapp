@@ -6,7 +6,8 @@ const router        = express.Router();
 const { asyncErrorHandler } = require('../middleware');
 const { getPosts, 
         newPost, 
-        createPost 
+        createPost,
+        showPost 
       }             = require('../controllers/posts');
 
 /* Get posts index /posts  */
@@ -19,9 +20,7 @@ router.get('/new', newPost);
   router.post('/', asyncErrorHandler(createPost));
 
 /* Get posts show /posts/:id  */
-router.get('/:id', (req, res, next) => {
-  res.send('SHOW /posts/:id');
-});
+router.get('/:id', asyncErrorHandler(showPost));
 
 /* Get posts edit /posts/:id/edit  */
   router.get('/:id/edit', (req, res, next) => {
