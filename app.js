@@ -12,7 +12,7 @@ const session         = require('express-session');
 
 
 // connect to mongo db setup
-mongoose.connect('mongodb://localhost:27017/Docs2go',{
+mongoose.connect('mongodb://localhost:27017/test1',{
   useNewUrlParser : true,
   useUnifiedTopology: true
 });
@@ -43,12 +43,17 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+
 //Configure passport and sessions
 app.use(session({
   secret: 'legendary',
   resave: false,
   saveUninitialized: true,
 }));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
