@@ -22,6 +22,11 @@ module.exports = {
     async showPost(req, res, next)
         {
             let post = await Post.findById(req.params.id);
-            res.render('/posts');
+            res.render('../views/posts/show', { post });
+        },
+    async editPost(req,res, next)
+        {
+            let post = await Post.findById(req.params.id);
+            res.render('../views/posts/edit', { post });
         }
 }

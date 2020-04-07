@@ -7,7 +7,8 @@ const { asyncErrorHandler } = require('../middleware');
 const { getPosts, 
         newPost, 
         createPost,
-        showPost 
+        showPost,
+        editPost
       }             = require('../controllers/posts');
 
 /* Get posts index /posts  */
@@ -23,9 +24,7 @@ router.get('/new', newPost);
 router.get('/:id', asyncErrorHandler(showPost));
 
 /* Get posts edit /posts/:id/edit  */
-  router.get('/:id/edit', (req, res, next) => {
-    res.send('EDIT /posts/:id/edit ');
-  });
+  router.get('/:id/edit', asyncErrorHandler(editPost));
 /* PUT posts update /posts/:id  */
 router.put('/:id', (req, res, next) => {
   res.send('UPDATE /posts/:id');

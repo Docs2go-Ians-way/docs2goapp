@@ -9,6 +9,7 @@ const mongoose        = require('mongoose');
 const passport        = require('passport');
 const User            = require('./models/user');
 const session         = require('express-session');
+const methodOverride  = require('method-override');
 
 
 // connect to mongo db setup

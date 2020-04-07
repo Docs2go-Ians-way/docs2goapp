@@ -1,1 +1,10 @@
 <h1>POSTS EJS file</h1>
+
+<% posts.forEach(function(post) { %>
+<div class="">
+<h2><%= post.title %></h2>
+<div><%= post.price %></div>
+<div><%= post.description %></div>
+<div><%= post.location %></div>
+</div>
+<% }); %>
