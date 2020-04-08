@@ -1,4 +1,4 @@
-<h1>POSTS EJS file</h1>
+<h1>Posts Index!</h1>
 
 <% posts.forEach(function(post) { %>
 <div class="">
@@ -6,5 +6,6 @@
 <div><%= post.price %></div>
 <div><%= post.description %></div>
 <div><%= post.location %></div>
+<div class=""><a href="/posts/<%= post.id %>">View more</a></div>
 </div>
 <% }); %>
