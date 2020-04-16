@@ -1,4 +1,7 @@
+require('dotenv').config()
+
 // require project dependancies
+
 const createError     = require('http-errors');
 const express         = require('express');
 const path            = require('path');
@@ -10,6 +13,7 @@ const passport        = require('passport');
 const User            = require('./models/user');
 const session         = require('express-session');
 const methodOverride  = require('method-override');
+
 
 
 // connect to mongo db setup
@@ -66,8 +70,6 @@ passport.deserializeUser(User.deserializeUser());
 app.use('/', indexRouter);
 app.use('/posts/:id/reviews', reviews);
 app.use('/posts', posts);
-
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

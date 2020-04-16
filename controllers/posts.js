@@ -1,24 +1,54 @@
 const Post = require('../models/post');
+const cloudinary = require('cloudinary');
+
+cloudinary.config({
+    cloud_name:'dwhbett1t',
+    api_key: '562967313584434',
+    api_secret: process.env.CLOUDINARY_SECRET
+});
 
 module.exports = {
     // Posts index
     async postIndex(req,res, next) {
         let posts = await Post.find({});
         res.render('posts/index', { posts });
-    },
-    
+        },
+
     // Posts new
     postNew(req,res, next) {
         res.render('posts/new');
-    },
+        },
 
-    // Post create
+    // Posts create
     async postCreate(req, res, next) 
         {
-            let post = await Post.create(req.body);
-            res.redirect(`/posts/${post.id}`);
+            req.body.post.images = [];
+
+            for(const file of req.files) {
+           
+               let image = await cloudinary.v2.uploader.upload(file.path);
+                    req.body.post.images.push({
+                            url: image.secure_url,
+                            public_id: image.public_id
+                    });
+            }
+            let post = await Post.create(req.body.post);
+            res.redirect(`/posts/${post._id}`);
         },
-    // Post show
+
+        // app.post('/profile', function (req, res) {
+        //     upload(req, res, function (err) {
+        //       if (err instanceof multer.MulterError) {
+        //         // A Multer error occurred when uploading.
+        //       } else if (err) {
+        //         // An unknown error occurred when uploading.
+        //       }
+          
+        //       // Everything went fine.
+        //     })
+        //   })
+
+        // posts show
     async postShow(req, res, next)
         {
             let post = await Post.findById(req.params.id);
@@ -37,9 +67,9 @@ module.exports = {
              res.redirect(`/posts/${post.id}`);
         },
         // posts destroy
-        async postDestroy(req,res, next) 
+    async postDestroy(req,res, next) 
         {
-            await Post.findByIdAndRemove(req.params.id)
-            res.redirect('/posts')
+            await Post.findByIdAndRemove(req.params.id);
+            res.redirect('/posts');
         }
 }

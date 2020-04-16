@@ -1,10 +1,9 @@
-// this file will coinside with te index routes
+// this file will coinside with the index routes
 const User = require('../models/user');
 const passport = require('passport');
 
 
-
-//These are methods which follow
+//METHODS
 module.exports = {
 // create a method that we can use with postRegister 
 
@@ -20,7 +19,6 @@ module.exports = {
                     await User.register(newUser, req.body.password);
                     res.redirect('/');
             },
-
             // POST /login method
             postLogin(req,res, next){
                 passport.authenticate('local', {
